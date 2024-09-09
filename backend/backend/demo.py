@@ -4,8 +4,8 @@ from copilotkit.integrations.fastapi import add_fastapi_endpoint
 from copilotkit import CopilotKitSDK, Action
 
 
-def greet_user():
-    print("Hello, world!")
+def greet_user(name):
+    print(f"Hello, {name}!")
     return "The user has been greeted. Tell them to check the console."
 
 app = FastAPI()
@@ -15,7 +15,11 @@ sdk = CopilotKitSDK(
             name="greet_user",
             description="Greet the user.",
             handler=greet_user,
-            parameters=[]
+            parameters=[{
+                "name": "name",
+                "description": "The name of the user to greet.",
+                "type": "string",
+            }]
         )
     ],
 )
