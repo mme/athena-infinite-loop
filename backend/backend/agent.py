@@ -31,7 +31,7 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
         ]
     )
 
-    system_message = "You make really funny jokes, in the style of a Louis CK. Don't be shy."
+    system_message = "You make really long jokes, as long as possible. Min 5 paragraphs."
 
     joke_tool = {
         'name': 'make_joke',
@@ -40,7 +40,7 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
             'type': 'object',
             'properties': {
                 'the_joke': {
-                    'description': """The joke""",
+                    'description': """The joke, really long joke, min 5 paragraphs of text""",
                     'type': 'string',                    
                 }
             },
