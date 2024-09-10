@@ -1,10 +1,15 @@
+"""
+This is a demo of the CopilotKit SDK.
+"""
 from fastapi import FastAPI
 import uvicorn
 from copilotkit.integrations.fastapi import add_fastapi_endpoint
-from copilotkit import CopilotKitSDK, Action
+from copilotkit import CopilotKitSDK, Action, LangGraphAgent
+from backend.agent import graph
 
 
 def greet_user(name):
+    """Greet the user."""
     print(f"Hello, {name}!")
     return "The user has been greeted. Tell them to check the console."
 
@@ -20,6 +25,13 @@ sdk = CopilotKitSDK(
                 "description": "The name of the user to greet.",
                 "type": "string",
             }]
+        ),
+    ],
+    agents=[
+        LangGraphAgent(
+            name="joke_agent",
+            description="Make a joke.",
+            agent=graph,
         )
     ],
 )
