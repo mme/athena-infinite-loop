@@ -8,13 +8,13 @@ from langchain_core.runnables import RunnableConfig
 from langchain_core.messages import SystemMessage, ToolMessage
 
 
-from copilotkit.langchain import configure_copilotkit
+from copilotkit.langchain import configure_copilotkit, exit_copilotkit
 
-class JokerAgentState(MessagesState):
-    """Joker Agent State"""
+class JokeAgentState(MessagesState):
+    """Joke Agent State"""
     joke: str
 
-async def joke_node(state: JokerAgentState, config: RunnableConfig):
+async def joke_node(state: JokeAgentState, config: RunnableConfig):
     """
     Make a joke.
     """
@@ -31,7 +31,7 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
         ]
     )
 
-    system_message = "You make really long jokes, as long as possible. Min 5 paragraphs."
+    system_message = "You make funny jokes."
 
     joke_tool = {
         'name': 'make_joke',
@@ -40,7 +40,7 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
             'type': 'object',
             'properties': {
                 'the_joke': {
-                    'description': """The joke, really long joke, min 5 paragraphs of text""",
+                    'description': """The joke""",
                     'type': 'string',                    
                 }
             },
@@ -65,6 +65,8 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
 
     joke = tool_calls[0]["args"]["the_joke"]
 
+    await exit_copilotkit(config)
+
     return {
         "messages": [
             response,
@@ -77,10 +79,10 @@ async def joke_node(state: JokerAgentState, config: RunnableConfig):
         "joke": joke,
     }
 
-workflow = StateGraph(JokerAgentState)
+workflow = StateGraph(JokeAgentState)
 workflow.add_node("joke_node", joke_node)
 workflow.set_entry_point("joke_node")
 
 workflow.add_edge("joke_node", END)
 memory = MemorySaver()
-graph = workflow.compile(checkpointer=memory)
+joke_graph = workflow.compile(checkpointer=memory)
