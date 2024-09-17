@@ -7,6 +7,7 @@ from copilotkit.integrations.fastapi import add_fastapi_endpoint
 from copilotkit import CopilotKitSDK, Action, LangGraphAgent
 from backend.joke_agent import joke_graph
 from backend.email_agent import email_graph
+from backend.ai_researcher.demo import graph as ai_researcher_graph
 
 
 def greet_user(name):
@@ -38,7 +39,12 @@ sdk = CopilotKitSDK(
             name="email_agent",
             description="Write an email.",
             agent=email_graph,
-        )
+        ),
+        LangGraphAgent(
+            name="ai_researcher",
+            description="Research a topic.",
+            agent=ai_researcher_graph,
+        ),
     ],
 )
 
