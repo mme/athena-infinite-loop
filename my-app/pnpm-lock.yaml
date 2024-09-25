@@ -9,20 +9,20 @@ importers:
   .:
     dependencies:
       '@copilotkit/react-core':
-        specifier: 1.3.1
-        version: 1.3.1(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 1.3.2-mme-discover-actions.0
+        version: 1.3.2-mme-discover-actions.0(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@copilotkit/react-ui':
-        specifier: 1.3.1
-        version: 1.3.1(@types/react@18.3.5)(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 1.3.2-mme-discover-actions.0
+        version: 1.3.2-mme-discover-actions.0(@types/react@18.3.5)(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@copilotkit/runtime':
-        specifier: 1.3.1
-        version: 1.3.1(class-validator@0.14.1)(ignore@5.3.2)
+        specifier: 1.3.2-mme-discover-actions.0
+        version: 1.3.2-mme-discover-actions.0(class-validator@0.14.1)(ignore@5.3.2)
       '@copilotkit/runtime-client-gql':
-        specifier: 1.3.1
-        version: 1.3.1(ignore@5.3.2)(react@18.3.1)
+        specifier: 1.3.2-mme-discover-actions.0
+        version: 1.3.2-mme-discover-actions.0(ignore@5.3.2)(react@18.3.1)
       '@copilotkit/shared':
-        specifier: 1.3.1
-        version: 1.3.1
+        specifier: 1.3.2-mme-discover-actions.0
+        version: 1.3.2-mme-discover-actions.0
       next:
         specifier: 14.2.7
         version: 14.2.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -85,27 +85,27 @@ packages:
     resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
     engines: {node: '>=6.9.0'}
 
-  '@copilotkit/react-core@1.3.1':
-    resolution: {integrity: sha512-GuzziiuaAAWw8x7vVM87pxHc4npuxbjplTJeM4Dn7NWAqnOGgBwpxtvj/A0XwORbxtqf9ewqOa2G/vHmThqWzw==}
+  '@copilotkit/react-core@1.3.2-mme-discover-actions.0':
+    resolution: {integrity: sha512-7R8HRa8MLaIPWWNAqWQaR8Sw2LsiFVLonB2pdYAoan5LJYUtwStNnYqf7UWNGECdL/sFIJgDR6eNq+LWnl2dIg==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
 
-  '@copilotkit/react-ui@1.3.1':
-    resolution: {integrity: sha512-Z+TYohUzs1Xk5ZmsFXhLdfXg5bvseb6+aOR5MtQE8BcYeaRF+umq75OlUAzZtuHGEcWAE4J/iCGXn2rcB0FNtA==}
+  '@copilotkit/react-ui@1.3.2-mme-discover-actions.0':
+    resolution: {integrity: sha512-N1wY+FiMLf40X65F/4gPaPSL/QAU5YJcfQd0++IiqaBR6w01zecOTKSPFpekwf1HoEe5Haf/5TP3+YUIbMCVpA==}
     peerDependencies:
       react: ^18.2.0
 
-  '@copilotkit/runtime-client-gql@1.3.1':
-    resolution: {integrity: sha512-Hd9EUWB+FGllHKGpRHS7n8UzgLEErUFofl6rZEpndlz6osWCGUo/DoJL8q9QD8GA3iBwzrbOMyRvEnt04M3/rQ==}
+  '@copilotkit/runtime-client-gql@1.3.2-mme-discover-actions.0':
+    resolution: {integrity: sha512-P2k7ctB+WDkfnr8qPB7OXpIjGtmn+scaBjb0BO5U8vhvsvpjc/Nh1SKVmPS4JTWFAwF/YTnBFfY+rPn2FaHlzA==}
     peerDependencies:
       react: ^18.2.0
 
-  '@copilotkit/runtime@1.3.1':
-    resolution: {integrity: sha512-tNio8dc/SYFZdN9w6eFl4S2jKqjBMmDNBf618rkD9UU4fAFD3EiLpbw0P5i4oeFASVC4/J2xuNimgGIt1sTqjA==}
+  '@copilotkit/runtime@1.3.2-mme-discover-actions.0':
+    resolution: {integrity: sha512-q1eKiz3eorcUGKyltRtaENBrKk70LFsXVjk0sC+MtKTj+3TNyz0xNL5MqzQL7fI/zzBZjkv/TktFIlXuawCUAg==}
 
-  '@copilotkit/shared@1.3.1':
-    resolution: {integrity: sha512-0vm4SbbcXkDAZCydHs9rVXGmGtBGgR9Eh+UiHSKArKADb9Y4JvnEYTwRGcs6c+jBV2FNkPUgDevNmaooW9iciQ==}
+  '@copilotkit/shared@1.3.2-mme-discover-actions.0':
+    resolution: {integrity: sha512-yGAP0jF20I0L1j7Zn/o4esWOCWE2lAWnEuccSLf/ZeACP4bpJzHs+V3WhIP+wPnGQV5hK3hMJEdG1GkmkKL4yg==}
 
   '@envelop/core@5.0.2':
     resolution: {integrity: sha512-tVL6OrMe6UjqLosiE+EH9uxh2TQC0469GwF4tE014ugRaDDKKVWwFwZe0TBMlcyHKh5MD4ZxktWo/1hqUxIuhw==}
@@ -3259,10 +3259,10 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  '@copilotkit/react-core@1.3.1(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@copilotkit/react-core@1.3.2-mme-discover-actions.0(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@copilotkit/runtime-client-gql': 1.3.1(ignore@5.3.2)(react@18.3.1)
-      '@copilotkit/shared': 1.3.1
+      '@copilotkit/runtime-client-gql': 1.3.2-mme-discover-actions.0(ignore@5.3.2)(react@18.3.1)
+      '@copilotkit/shared': 1.3.2-mme-discover-actions.0
       '@scarf/scarf': 1.3.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
@@ -3391,11 +3391,11 @@ snapshots:
       - youtube-transcript
       - youtubei.js
 
-  '@copilotkit/react-ui@1.3.1(@types/react@18.3.5)(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@copilotkit/react-ui@1.3.2-mme-discover-actions.0(@types/react@18.3.5)(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@copilotkit/react-core': 1.3.1(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@copilotkit/runtime-client-gql': 1.3.1(ignore@5.3.2)(react@18.3.1)
-      '@copilotkit/shared': 1.3.1
+      '@copilotkit/react-core': 1.3.2-mme-discover-actions.0(ignore@5.3.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@copilotkit/runtime-client-gql': 1.3.2-mme-discover-actions.0(ignore@5.3.2)(react@18.3.1)
+      '@copilotkit/shared': 1.3.2-mme-discover-actions.0
       '@headlessui/react': 2.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-markdown: 8.0.7(@types/react@18.3.5)(react@18.3.1)
@@ -3528,10 +3528,10 @@ snapshots:
       - youtube-transcript
       - youtubei.js
 
-  '@copilotkit/runtime-client-gql@1.3.1(ignore@5.3.2)(react@18.3.1)':
+  '@copilotkit/runtime-client-gql@1.3.2-mme-discover-actions.0(ignore@5.3.2)(react@18.3.1)':
     dependencies:
-      '@copilotkit/runtime': 1.3.1(class-validator@0.14.1)(ignore@5.3.2)
-      '@copilotkit/shared': 1.3.1
+      '@copilotkit/runtime': 1.3.2-mme-discover-actions.0(class-validator@0.14.1)(ignore@5.3.2)
+      '@copilotkit/shared': 1.3.2-mme-discover-actions.0
       '@urql/core': 5.0.6(graphql@16.9.0)
       class-transformer: 0.5.1
       class-validator: 0.14.1
@@ -3664,10 +3664,10 @@ snapshots:
       - youtube-transcript
       - youtubei.js
 
-  '@copilotkit/runtime@1.3.1(class-validator@0.14.1)(ignore@5.3.2)':
+  '@copilotkit/runtime@1.3.2-mme-discover-actions.0(class-validator@0.14.1)(ignore@5.3.2)':
     dependencies:
       '@anthropic-ai/sdk': 0.27.3
-      '@copilotkit/shared': 1.3.1
+      '@copilotkit/shared': 1.3.2-mme-discover-actions.0
       '@google/generative-ai': 0.11.5
       '@graphql-yoga/plugin-defer-stream': 3.7.0(graphql-yoga@5.7.0(graphql@16.9.0))(graphql@16.9.0)
       '@langchain/community': 0.0.53(langchain@0.1.37(ignore@5.3.2)(openai@4.57.0(zod@3.23.8)))(openai@4.57.0(zod@3.23.8))
@@ -3812,7 +3812,7 @@ snapshots:
       - youtube-transcript
       - youtubei.js
 
-  '@copilotkit/shared@1.3.1':
+  '@copilotkit/shared@1.3.2-mme-discover-actions.0':
     dependencies:
       '@segment/analytics-node': 2.1.2
       chalk: 4.1.2

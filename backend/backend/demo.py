@@ -47,8 +47,9 @@ sdk = CopilotKitSDK(
 
 add_fastapi_endpoint(app, sdk, "/copilotkit")
 
-port = int(os.getenv("PORT", "4000"))
+port = int(os.getenv("PORT", "8000"))
+host = "0.0.0.0" if os.getenv("RENDER") else "127.0.0.1" # pylint: disable=C0103
 
 def main():
     """Run the uvicorn server."""
-    uvicorn.run("backend.demo:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("backend.demo:app", host=host, port=port, reload=True)
