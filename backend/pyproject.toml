@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-copilotkit = "0.1.16"
+copilotkit = "0.1.17"
 uvicorn = "^0.30.6"
 
 [build-system]
