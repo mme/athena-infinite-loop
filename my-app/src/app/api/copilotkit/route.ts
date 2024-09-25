@@ -9,12 +9,13 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 const serviceAdapter = new OpenAIAdapter({ openai });
 
-// const BASE_URL = process.env.REMOTE_ACTION_URL || "http://127.0.0.1:8000";
+const REMOTE_ACTION_URL =
+  process.env.REMOTE_ACTION_URL || "http://localhost:8000/copilotkit";
 
 const runtime = new CopilotRuntime({
   remoteActions: [
     {
-      url: `http://localhost:8000/copilotkit`,
+      url: REMOTE_ACTION_URL,
     },
   ],
 });
