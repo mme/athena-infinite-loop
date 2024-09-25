@@ -1,6 +1,7 @@
 """
 This is a demo of the CopilotKit SDK.
 """
+import os
 from fastapi import FastAPI
 import uvicorn
 from copilotkit.integrations.fastapi import add_fastapi_endpoint
@@ -46,6 +47,8 @@ sdk = CopilotKitSDK(
 
 add_fastapi_endpoint(app, sdk, "/copilotkit")
 
+port = int(os.getenv("PORT", "4000"))
+
 def main():
     """Run the uvicorn server."""
-    uvicorn.run("backend.demo:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("backend.demo:app", host="127.0.0.1", port=port, reload=True)
