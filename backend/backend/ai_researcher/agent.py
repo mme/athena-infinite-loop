@@ -7,7 +7,7 @@ import json
 
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
-from copilotkit.langchain import exit_copilotkit
+from copilotkit.langchain import copilotkit_exit
 
 
 
@@ -20,7 +20,7 @@ from .extract import extract_node
 def route(state, config):
     """Route to research nodes."""
     if not state.get("steps", None):
-        # exit_copilotkit(config=config)
+        # copilotkit_exit(config=config)
         return END
 
     print("steps = ", state["steps"])

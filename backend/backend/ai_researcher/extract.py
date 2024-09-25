@@ -5,7 +5,7 @@ import json
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage
-from copilotkit.langchain import configure_copilotkit
+from copilotkit.langchain import copilotkit_customize_config
 
 from langchain_core.runnables import RunnableConfig
 
@@ -15,7 +15,7 @@ async def extract_node(state: AgentState, config: RunnableConfig):
     """
     The extract node is responsible for extracting information from a tavily search.
     """
-    config = configure_copilotkit(config, emit_tool_calls=True)
+    config = copilotkit_customize_config(config, emit_tool_calls=True)
     current_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
 
     if current_step is None:
@@ -44,7 +44,7 @@ This is a sentence with a reference to a source [source 1][1] and another refere
         print("Extracting information from the search results...")
         print("Current step: ", current_step)
         print("State: ", state)
-        # config = configure_copilotkit(config,emit_messages=True, emit_all=True)
+        # config = copilotkit_customize_config(config,emit_messages=True, emit_all=True)
 
         response = await ChatOpenAI(model="gpt-4o").ainvoke([
             *state["messages"],

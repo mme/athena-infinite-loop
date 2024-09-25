@@ -7,7 +7,7 @@ from datetime import datetime
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
-from copilotkit.langchain import configure_copilotkit, exit_copilotkit
+from copilotkit.langchain import copilotkit_customize_config, copilotkit_exit
 
 
 from .state import AgentState
@@ -20,7 +20,7 @@ async def steps_node(state: AgentState, config: RunnableConfig):
     """
 
 
-    config = configure_copilotkit(config, emit_all=True)
+    config = copilotkit_customize_config(config, emit_all=True)
 
     system_message = f"""
 You are a search assistant. Your task is to help the user with complex search queries by breaking the down into smaller steps.
@@ -88,7 +88,7 @@ Make sure to add all the steps needed to answer the user's query.
     if len(steps):
         steps[0]["updates"] = ["Searching the web..."]
 
-    await exit_copilotkit(config)
+    await copilotkit_exit(config)
 
     return {
         "messages": [

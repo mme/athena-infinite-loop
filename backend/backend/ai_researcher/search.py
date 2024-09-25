@@ -7,7 +7,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage
 from langchain_core.runnables import RunnableConfig
 from langchain_community.tools.tavily_search import TavilySearchResults
-from copilotkit.langchain import configure_copilotkit
+from copilotkit.langchain import copilotkit_customize_config
 
 from .state import AgentState
 
@@ -15,7 +15,7 @@ async def search_node(state: AgentState, config: RunnableConfig):
     """
     The search node is responsible for searching the internet for information.
     """
-    config = configure_copilotkit(config, emit_tool_calls=True)
+    config = copilotkit_customize_config(config, emit_tool_calls=True)
 
     tavily_tool = TavilySearchResults(
         max_results=10,
@@ -25,7 +25,7 @@ async def search_node(state: AgentState, config: RunnableConfig):
         include_images=True,
         tavily_api_key="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"
     )
-    # config = configure_copilotkit(config, emit_messages=True)
+    # config = copilotkit_customize_config(config, emit_messages=True)
     current_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
 
     if current_step is None:
@@ -49,7 +49,7 @@ This is what you need to search for, please come up with a good search query: {c
         parallel_tool_calls=False,
         tool_choice=tavily_tool.name
     )
-    # config = configure_copilotkit(config, emit_messages=True, emit_all=True)
+    # config = copilotkit_customize_config(config, emit_messages=True, emit_all=True)
 
     response = await model.ainvoke([
         *state["messages"],
