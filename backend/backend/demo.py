@@ -51,4 +51,4 @@ port = int(os.getenv("PORT", "4000"))
 
 def main():
     """Run the uvicorn server."""
-    uvicorn.run("backend.demo:app", host="127.0.0.1", port=port, reload=True)
+    uvicorn.run("backend.demo:app", host="0.0.0.0", port=port, reload=True)
