@@ -6,6 +6,7 @@ import {
 } from "@copilotkit/react-core";
 import { CopilotSidebar } from "@copilotkit/react-ui";
 import "@copilotkit/react-ui/styles.css";
+import { CustomMessages } from "./CustomMessages";
 
 export default function Home() {
   return (
@@ -16,7 +17,9 @@ export default function Home() {
       <div>
         <Email />
       </div>
-      <CopilotSidebar defaultOpen={true} clickOutsideToClose={false} />
+      <CopilotSidebar defaultOpen={true} clickOutsideToClose={false}  
+      Messages={CustomMessages}
+      />
     </CopilotKit>
   );
 }
