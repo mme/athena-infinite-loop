@@ -44,7 +44,7 @@ This is a sentence with a reference to a source [source 1][1] and another refere
         print("Extracting information from the search results...")
         print("Current step: ", current_step)
         print("State: ", state)
-        # config = copilotkit_customize_config(config,emit_messages=True, emit_all=True)
+        config = copilotkit_customize_config(config,emit_messages=True, emit_all=True)
 
         response = await ChatOpenAI(model="gpt-4o" ).ainvoke([
             *state["messages"],
