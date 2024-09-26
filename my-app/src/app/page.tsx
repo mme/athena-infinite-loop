@@ -69,11 +69,10 @@ function Research() {
     <h1 style={{marginTop: "20px"}}>Research</h1>
     <div>
       <h2>Steps</h2>
-      {state?.steps?.map((step, index) => (
+      {state?.steps?.map((step: any, index: any) => (
         <div key={index}>
           <span>{step.description}</span>
-          <span style={{color: step.status === "success" ? "green" : "red"}}>Status: {step.status}</span>
-
+          <span style={{color: step.status === "complete" ? "green" : "red"}}>Status: {step.status}</span>
         </div>
       ))}
     </div>
