@@ -72,7 +72,7 @@ function Research() {
       {state?.steps?.map((step: any, index: any) => (
         <div key={index}>
           <span>{step.description}</span>
-          <span style={{color: step.status === "complete" ? "green" : "red"}}>Status: {step.status}</span>
+          <span style={{color: step.status === "complete" ? "green" : "red"}}>| Status: {step.status}</span>
         </div>
       ))}
     </div>
