@@ -44,7 +44,7 @@ sdk = CopilotKitSDK(
             agent=email_graph,
         ),
         LangGraphAgent(
-            name="search_agent",
+            name="ai_researcher",
             description="Search agent.",
             agent=ai_researcher_graph,
         )

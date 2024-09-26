@@ -62,8 +62,17 @@ function Email() {
 }
 
 function Research() {
-  const { state } = useCoAgent({ name: "search_agent" });
+  const { state } = useCoAgent({ name: "ai_researcher" });
   console.log("ai_researcher_state: ",  state)
+
+  useCoAgentAction({
+    name: "ai_researcher",
+    nodeName: "search_node",
+    handler: ({ state, nodeName }) => {
+        console.log("state in ai researcher", state)
+    }
+})
+
 
   return <div>
     <h1 style={{marginTop: "20px"}}>Research</h1>
