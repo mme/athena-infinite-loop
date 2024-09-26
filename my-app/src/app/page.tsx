@@ -7,11 +7,15 @@ import {
 } from "@copilotkit/react-core";
 import { CopilotSidebar } from "@copilotkit/react-ui";
 import "@copilotkit/react-ui/styles.css";
+import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
   return (
     <CopilotKit runtimeUrl="/api/copilotkit">
+      <Head>
+        <title>CopilotKit Sandbox - Athena | AJ</title>
+      </Head>
       <div>
         <Joke />
       </div>
@@ -20,6 +24,9 @@ export default function Home() {
       </div>
       <div>
         <TestNavigation />
+      </div>
+      <div>
+        <Research />
       </div>
       <CopilotSidebar defaultOpen={true} clickOutsideToClose={false} />
     </CopilotKit>
@@ -52,6 +59,25 @@ function Email() {
   });
 
   return <div>Email:{state.email}</div>;
+}
+
+function Research() {
+  const { state } = useCoAgent({ name: "search_agent" });
+  console.log("ai_researcher_state: ",  state)
+
+  return <div>
+    <h1 style={{marginTop: "20px"}}>Research</h1>
+    <div>
+      <h2>Steps</h2>
+      {state?.steps?.map((step, index) => (
+        <div key={index}>
+          <span>{step.description}</span>
+          <span style={{color: step.status === "success" ? "green" : "red"}}>Status: {step.status}</span>
+
+        </div>
+      ))}
+    </div>
+  </div>;
 }
 
 function TestNavigation() {

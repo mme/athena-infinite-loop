@@ -8,6 +8,7 @@ from copilotkit.integrations.fastapi import add_fastapi_endpoint
 from copilotkit import CopilotKitSDK, Action, LangGraphAgent
 from backend.joke_agent import joke_graph
 from backend.email_agent import email_graph
+from backend.ai_researcher.agent import graph as ai_researcher_graph
 
 
 def greet_user(name):
@@ -41,11 +42,25 @@ sdk = CopilotKitSDK(
             name="email_agent",
             description="Write an email.",
             agent=email_graph,
+        ),
+        LangGraphAgent(
+            name="search_agent",
+            description="Search agent.",
+            agent=ai_researcher_graph,
         )
     ],
+
 )
 
 add_fastapi_endpoint(app, sdk, "/copilotkit")
+
+
+# add new route for health check
+@app.get("/health")
+def health():
+    """Health check."""
+    return {"status": "ok"}
+
 
 port = int(os.getenv("PORT", "8000"))
 host = "0.0.0.0" if os.getenv("RENDER") else "127.0.0.1" # pylint: disable=C0103
