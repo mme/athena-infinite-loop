@@ -63,29 +63,38 @@ function Email() {
 
 function Research() {
   const { state } = useCoAgent({ name: "ai_researcher" });
-  console.log("ai_researcher_state: ",  state)
+  console.log("ai_researcher_state: ", state);
 
   useCoAgentAction({
     name: "ai_researcher",
     nodeName: "search_node",
     handler: ({ state, nodeName }) => {
-        console.log("state in ai researcher", state)
-    }
-})
+      console.log("state in ai researcher", state);
+    },
+    // render: ({ state, nodeName }) => {
+    //   return <div>Researching: {state.}</div>;
+    // },
+  });
 
-
-  return <div>
-    <h1 style={{marginTop: "20px"}}>Research</h1>
+  return (
     <div>
-      <h2>Steps</h2>
-      {state?.steps?.map((step: any, index: any) => (
-        <div key={index}>
-          <span>{step.description}</span>
-          <span style={{color: step.status === "complete" ? "green" : "red"}}>| Status: {step.status}</span>
-        </div>
-      ))}
+      <h1 style={{ marginTop: "20px" }}>Research</h1>
+      <div>
+        <h2>Answer: {JSON.stringify(state?.answer?.markdown)}</h2>
+        <h2>Steps</h2>
+        {state?.steps?.map((step: any, index: any) => (
+          <div key={index}>
+            <span>{step.description}</span>
+            <span
+              style={{ color: step.status === "complete" ? "green" : "red" }}
+            >
+              | Status: {step.status}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 }
 
 function TestNavigation() {
