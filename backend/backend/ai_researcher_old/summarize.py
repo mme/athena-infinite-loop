@@ -7,23 +7,24 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
 from copilotkit.langchain import copilotkit_customize_config
-
-from backend.ai_researcher.state import AgentState
+from langchain_core.messages.ai import AIMessage
+from .state import AgentState
 
 async def summarize_node(state: AgentState, config: RunnableConfig):
     """
     The summarize node is responsible for summarizing the information.
     """
 
-    config = copilotkit_customize_config(
-        config,
-        emit_intermediate_state=[
-            {
-                "state_key": "answer",
-                "tool": "summarize",
-            }
-        ]
-    )
+    # config = copilotkit_customize_config(
+    #     config,
+    #     emit_messages=True,
+    #     # emit_state={
+    #     #     "answer": {
+    #     #         "tool": "summarize"
+    #     #     },
+    #     # }
+    # )
+    config = copilotkit_customize_config(config, emit_all=True)
 
     system_message = f"""
 The system has performed a series of steps to answer the user's query.
@@ -68,7 +69,7 @@ Summarize the final result. Make sure that the summary is complete and includes 
         }
     }
 
-    response = await ChatOpenAI(model="gpt-4o").bind_tools([summarize_tool], parallel_tool_calls=False, tool_choice="summarize").ainvoke([
+    response = await ChatOpenAI(model="gpt-4o").bind_tools([summarize_tool], tool_choice="summarize").ainvoke([
         *state["messages"],
         SystemMessage(
             content=system_message
@@ -80,7 +81,7 @@ Summarize the final result. Make sure that the summary is complete and includes 
             response,
             ToolMessage(
                 name=response.tool_calls[0]["name"],
-                content="summarized.",
+                content=response.tool_calls[0]["args"]["markdown"],
                 tool_call_id=response.tool_calls[0]["id"]
             )
         ],

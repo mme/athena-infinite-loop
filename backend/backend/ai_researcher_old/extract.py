@@ -5,16 +5,17 @@ import json
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage
+from copilotkit.langchain import copilotkit_customize_config
 
 from langchain_core.runnables import RunnableConfig
 
-from backend.ai_researcher.state import AgentState
+from .state import AgentState
 
 async def extract_node(state: AgentState, config: RunnableConfig):
     """
     The extract node is responsible for extracting information from a tavily search.
     """
-
+    config = copilotkit_customize_config(config, emit_tool_calls=True)
     current_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
 
     if current_step is None:
@@ -39,19 +40,32 @@ This is a sentence with a reference to a source [source 1][1] and another refere
 [1]: http://example.com/source1 "Title of Source 1"
 [2]: http://example.com/source2 "Title of Source 2"
 """
+    try: 
+        print("Extracting information from the search results...")
+        print("Current step: ", current_step)
+        print("State: ", state)
+        config = copilotkit_customize_config(config,emit_messages=True, emit_all=True)
 
-    response = await ChatOpenAI(model="gpt-4o").ainvoke([
-        *state["messages"],
-        SystemMessage(content=system_message)
-    ], config)
+        response = await ChatOpenAI(model="gpt-4o" ).ainvoke([
+            *state["messages"],
+                SystemMessage(content=system_message)
+            ], config)
+        print("Response: ", response)
+        print("Response content: ", response.content)
 
-    current_step["result"] = response.content
-    current_step["search_result"] = None
-    current_step["status"] = "complete"
-    current_step["updates"] = [*current_step["updates"], "Done."]
+        current_step["result"] = response.content
+        current_step["search_result"] = None
+        current_step["status"] = "complete"
+        current_step["updates"] = [*current_step["updates"], "Done."]
 
-    next_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
-    if next_step:
-        next_step["updates"] = ["Searching the web..."]
+        next_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
+        print("next step: ", next_step)
+        if next_step:
+            next_step["updates"] = ["Searching the web..."]
 
-    return state
+        return state
+
+    except Exception as e:
+        print("Error in extract_node: ", e)
+        # raise e
+        return "Error in extract_node"  + str(e)

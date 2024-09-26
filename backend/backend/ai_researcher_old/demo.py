@@ -7,13 +7,13 @@ from fastapi import FastAPI
 import uvicorn
 from copilotkit.integrations.fastapi import add_fastapi_endpoint
 from copilotkit import CopilotKitSDK, LangGraphAgent
-from backend.ai_researcher.agent import graph
+from .agent import graph
 
 app = FastAPI()
 sdk = CopilotKitSDK(
     agents=[
         LangGraphAgent(
-            name="search_agent",
+            name="ai_researcher",
             description="Search agent.",
             agent=graph,
         )

@@ -5,6 +5,8 @@ It defines the state of the agent and the state of the conversation.
 
 from typing import List, TypedDict, Optional
 from langgraph.graph import MessagesState
+from langchain_core.messages import BaseMessage
+
 
 class Step(TypedDict):
     """
@@ -25,4 +27,5 @@ class AgentState(MessagesState):
     It is a subclass of the MessagesState class from langgraph.
     """
     steps: List[Step]
+    messages: List[BaseMessage]
     answer: Optional[str]

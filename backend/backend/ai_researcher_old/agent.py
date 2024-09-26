@@ -8,17 +8,21 @@ import json
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
 
-from backend.ai_researcher.state import AgentState
-from backend.ai_researcher.steps import steps_node
-from backend.ai_researcher.search import search_node
-from backend.ai_researcher.summarize import summarize_node
-from backend.ai_researcher.extract import extract_node
 
-def route(state):
+
+from .state import AgentState
+from .steps import steps_node
+from .search import search_node
+from .summarize import summarize_node
+from .extract import extract_node
+
+def route(state, config):
     """Route to research nodes."""
     if not state.get("steps", None):
+        # copilotkit_exit(config=config)
         return END
 
+    print("steps = ", state["steps"])
     current_step = next((step for step in state["steps"] if step["status"] == "pending"), None)
 
     if not current_step:
