@@ -56,6 +56,7 @@ This is what you need to search for, please come up with a good search query: {c
     print("response", response)
 
     tool_msg = tavily_tool.invoke(response.tool_calls[0])
+    print("tool_msg", tool_msg)
 
     current_step["search_result"] = json.loads(tool_msg.content)
     current_step["updates"] = [*current_step["updates"],"Extracting information..."]
